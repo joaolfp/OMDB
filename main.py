@@ -1,9 +1,15 @@
 import requests
+import json
 
 try:
-    request = requests.get("https://www.omdbapi.com/?t=intersteller")
+    request = requests.get('http://www.omdbapi.com/?t=interstellar')
 except:
     print("Error network")
     exit()
 
-print(request.text)
+dictionary = json.loads(request.text)
+
+print("Title:", dictionary['Title'])
+print("Year:", dictionary['Year'])
+print("Director:", dictionary['Director'])
+print("Actors:", dictionary['Actors'])
