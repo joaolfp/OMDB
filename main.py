@@ -1,15 +1,25 @@
 import requests
 import json
 
-try:
-    request = requests.get('http://www.omdbapi.com/?t=interstellar')
-except:
-    print("Error network")
-    exit()
+def requisition(title):
+    try:
+        request = requests.get('http://www.omdbapi.com/?t=' + title)
+        dictionary = json.loads(request.text)
+        return dictionary
+    except:
+        print("Error network")
+        return None
 
-dictionary = json.loads(request.text)
+exit = False
+while not exit:
+    write = input("Type a movie name or EXIT to close")
 
-print("Title:", dictionary['Title'])
-print("Year:", dictionary['Year'])
-print("Director:", dictionary['Director'])
-print("Actors:", dictionary['Actors'])
+    if exit == 'EXIT':
+        exit = True
+    else:
+        movie = requisition(write)
+
+print("Title:", movie['Title'])
+print("Year:", movie['Year'])
+print("Director:", movie['Director'])
+print("Actors:", movie['Actors'])
