@@ -10,6 +10,12 @@ def requisition(title):
         print("Error network")
         return None
 
+def print_details(film):
+    print("Title:", movie['Title'])
+    print("Year:", movie['Year'])
+    print("Director:", movie['Director'])
+    print("Actors:", movie['Actors'])
+
 exit = False
 while not exit:
     write = input("Type a movie name or EXIT to close")
@@ -18,8 +24,4 @@ while not exit:
         exit = True
     else:
         movie = requisition(write)
-
-print("Title:", movie['Title'])
-print("Year:", movie['Year'])
-print("Director:", movie['Director'])
-print("Actors:", movie['Actors'])
+        print_details(movie)
